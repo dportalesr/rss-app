@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Feed, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Feed do
+  describe 'validations' do
+    it 'fails when url field is not a URL' do
+      expect(Feed.new(url: 'popo')).to be_invalid
+    end
+
+    it 'works when url field is a URL' do
+      expect(Feed.new(url: 'https://example.com')).to be_valid
+    end
+  end
 end
